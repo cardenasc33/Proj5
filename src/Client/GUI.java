@@ -1,6 +1,7 @@
 package Client;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,13 +22,21 @@ public class GUI extends Application {
     private TextArea choices[];
     private VBox playerScores;
     private Button sendChoice;
-    /*
-    Here's how the player chooses an answer to the question:
-        We show the answers in text boxes. When the player clicks on one of the textboxes we will
-        update all the textboxes. Mainly, so that the textbox the player clicks will say "[selected]"
-     */
+    private static String[] questions;
+
     public static void main(String[] args){
         launch(args);
+    }
+
+    @Override
+    public void init(){
+        Platform.runLater(()->{
+            questions = new String[4];
+            questions[0] = "Template for answer choice 1";
+            questions[1] = "Template for answer choice 2";
+            questions[2] = "Template for answer choice 3";
+            questions[3] = "Template for answer choice 4";
+        });
     }
 
     @Override
@@ -47,11 +56,16 @@ public class GUI extends Application {
         displayChoices.setPadding(new Insets(0, 25, 0, 25));
         choices = new TextArea[4];
         for (int i = 0; i < 4; i++) {
-            choices[i] = new TextArea("Template for answer choice " + i);
+            choices[i] = new TextArea(questions[i]);
             choices[i].setEditable(false);
             displayChoices.getChildren().add(choices[i]);
             choices[i].setWrapText(true);
             choices[i].setMaxSize(200, 150);
+
+            final int WEIRD_LAMBA_WORK_AROUND = i;
+            choices[i].setOnMouseClicked(e ->{
+                updateAnswerSelection(WEIRD_LAMBA_WORK_AROUND, choices);
+            });
         }
 
         playerScores.getChildren().add(new Label("Scores:"));
@@ -67,5 +81,14 @@ public class GUI extends Application {
         layout.setRight(playerScores);
         primaryStage.setScene(new Scene(layout, 600, 250));
         primaryStage.show();
+    }
+
+    private void updateAnswerSelection(int selected, TextArea[] c){
+        for(int i = 0; i < c.length; i++){
+            if (i == selected)
+                c[i].appendText("\n [CHOICE SELECTED]");
+            else
+                c[i].setText(questions[i]);
+        }
     }
 }
