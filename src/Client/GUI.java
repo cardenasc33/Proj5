@@ -86,7 +86,7 @@ public class GUI extends Application {
     private void updateAnswerSelection(int selected, TextArea[] c){
         for(int i = 0; i < c.length; i++){
             if (i == selected)
-                c[i].appendText("\n [CHOICE SELECTED]");
+                c[i].setText(questions[i] + "\n [CHOICE SELECTED]");
             else
                 c[i].setText(questions[i]);
         }
