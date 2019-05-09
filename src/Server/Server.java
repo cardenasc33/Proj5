@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * main.Server.Server
  */
-public class Server extends Connection {
+public class Server extends Main.Connection {
 
     private int port;
     private ArrayList<ClientThread> connections; // List of client connections
