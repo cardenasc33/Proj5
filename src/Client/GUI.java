@@ -13,23 +13,38 @@ import javafx.scene.text.Font;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import Main.NetworkObject;
 
 public class GUI extends Application {
 
     private BorderPane layout;
     private Label question;
     private HBox displayChoices;
+    private HBox bottomArea;
     private TextArea choices[];
     private VBox playerScores;
     private Button sendChoice;
+    private TextArea console;
+
+    private static Client player;
+    private static NetworkObject clientComm;
     private static String[] questions;
 
     public static void main(String[] args){
         launch(args);
+
+        player = new Client("127.0.0.1", 5555, data->{
+            Platform.runLater(()->{
+                
+            });
+        });
     }
 
     @Override
     public void init(){
+        /*
+        We also want to start the server here
+         */
         Platform.runLater(()->{
             questions = new String[4];
             questions[0] = "Template for answer choice 1";
@@ -52,6 +67,13 @@ public class GUI extends Application {
         sendChoice.setFont(new Font("Comic Sans" /*no shame*/, 14));
         sendChoice.setStyle("-fx-font-weight: bold");
 
+        console = new TextArea();
+        console.setEditable(false);
+        console.setPrefSize(200, 50);
+
+        bottomArea = new HBox(sendChoice, console);
+        bottomArea.setAlignment(Pos.BOTTOM_CENTER);
+
         displayChoices = new HBox();
         displayChoices.setPadding(new Insets(0, 25, 0, 25));
         choices = new TextArea[4];
@@ -62,9 +84,9 @@ public class GUI extends Application {
             choices[i].setWrapText(true);
             choices[i].setMaxSize(200, 150);
 
-            final int WEIRD_LAMBA_WORK_AROUND = i;
+            final int WEIRD_LAMBDA_WORK_AROUND = i;
             choices[i].setOnMouseClicked(e ->{
-                updateAnswerSelection(WEIRD_LAMBA_WORK_AROUND, choices);
+                updateAnswerSelection(WEIRD_LAMBDA_WORK_AROUND, choices);
             });
         }
 
@@ -76,7 +98,7 @@ public class GUI extends Application {
 
         layout = new BorderPane();
         layout.setTop(question); layout.setAlignment(question, Pos.TOP_CENTER);
-        layout.setBottom(sendChoice); layout.setAlignment(sendChoice, Pos.BOTTOM_CENTER);
+        layout.setBottom(bottomArea); layout.setAlignment(sendChoice, Pos.BOTTOM_CENTER); layout.setAlignment(console, Pos.BOTTOM_RIGHT);
         layout.setCenter(displayChoices); layout.setAlignment(displayChoices, Pos.CENTER);
         layout.setRight(playerScores);
         primaryStage.setScene(new Scene(layout, 600, 250));
@@ -90,5 +112,11 @@ public class GUI extends Application {
             else
                 c[i].setText(questions[i]);
         }
+    }
+
+    private void updateGameState(){
+        Platform.runLater(()->{
+
+        });
     }
 }
