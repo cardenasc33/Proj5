@@ -11,14 +11,14 @@ Nothing here will be set in stone.
 public class NetworkObject implements Serializable {
     private HashMap<Integer, String> playerInfo;
     private String serverMessage;
-    private int correctChoice;
+    private Questions q;
     private int[] playerScores;
 
     public NetworkObject(){
         playerInfo = new HashMap<>();
         serverMessage = null;
-        correctChoice = -1;
         playerScores = new int[4];
+        q = null;
     }
 
     /*
@@ -27,7 +27,6 @@ public class NetworkObject implements Serializable {
     public NetworkObject(int i){
         playerInfo = new HashMap<>();
         serverMessage = null;
-        correctChoice = i;
         playerScores = new int[4];
     }
 
@@ -44,4 +43,8 @@ public class NetworkObject implements Serializable {
     public void updatePlayerScore(int p, int s){
         playerScores[p] += s;
     }
+
+    public void loadQuestions(Questions ques){ q = ques; }
+
+    public Questions getQuestions() { return q;}
 }
