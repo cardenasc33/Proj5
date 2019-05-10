@@ -37,7 +37,7 @@ public class Client extends Connection {
                         Serializable data = (Serializable) getIn().readObject();
                         System.out.println("[CLIENT] Received main.GameState object, updating main.GUI.");
                         NetworkObject no = (NetworkObject)data;
-                        System.out.println(no.getServerMessage());
+                        System.out.println(no.getQuestion().getQuestion());
                         callback.accept(data);
 
                     }

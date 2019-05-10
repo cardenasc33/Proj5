@@ -26,7 +26,8 @@ public class ServerGUI extends Application {
     private void initSendQuestionButton() {
         sendQuestion.setOnAction((event) -> {
             NetworkObject o = new NetworkObject();
-            o.set
+            o.setQueston(questions.get(currentQ));
+            currentQ++;
             server.sendToAll(o);
         });
     }
@@ -42,11 +43,13 @@ public class ServerGUI extends Application {
     public void start(Stage primaryStage) throws Exception {
         server.start();
         initSendQuestionButton();
+        initFinalizeButton();
 
         qManag = new QuestionManager(primaryStage);
         BorderPane borderPane = new BorderPane();
         borderPane.setLeft(qManag);
         borderPane.setRight(sendQuestion);
+        borderPane.setCenter(finalizeButton);
 
         Scene mainScene = new Scene(borderPane);
 

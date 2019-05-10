@@ -13,7 +13,7 @@ public class QuestionBox extends VBox {
     TextField question = new TextField();;
     ArrayList<TextField> choices = new ArrayList<>();;
     int numChoices = 4;
-    Question questionObj;
+    Question questionObj = null;
 
     private void init() {
         this.setPadding(new Insets(5));
@@ -31,6 +31,7 @@ public class QuestionBox extends VBox {
 
     public QuestionBox(Question question) {
         init();
+        questionObj = question;
         this.question.setText(question.getQuestion());
         for (int i = 0; i < numChoices; i++) {
             choices.get(i).setText(question.getAlternatives()[i]);
@@ -49,8 +50,11 @@ public class QuestionBox extends VBox {
         for (TextField t : choices) {
             alternatives.add(t.getText());
         }
-        questionObj.setAlternatives((String[])alternatives.toArray());
-        questionObj.setQuestion(question.getText());
+        if (questionObj == null) {
+            questionObj.setAlternatives((String[])alternatives.toArray());
+            questionObj.setQuestion(question.getText());
+        }
+
         return this.questionObj;
     }
 

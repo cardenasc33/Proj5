@@ -36,7 +36,7 @@ public class GUI extends Application {
         if (!gameStarted && guiLoaded){
             Platform.runLater(()->{
                 NetworkObject obj = (NetworkObject) data;
-                question.setText(obj.getServerMessage());
+                question.setText(obj.getQuestion().getQuestion());
                 console.appendText("Connected to server...\n");
             });
         }
