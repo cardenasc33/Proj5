@@ -28,4 +28,6 @@ public class QuestionManager extends GridPane {
         this.questionContainer.getChildren().add(questionBox);
         questions.add(questionBox);
     }
+
+
 }

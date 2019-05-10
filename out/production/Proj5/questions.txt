@@ -1,0 +1,85 @@
+What is a socket?
+4
+1) An endpoint of communication between two machines; reading and writing of data happens here
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is the role for a ServerSocket?
+4
+1) Gets a port to listen to; listens for connections
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+Which of the following is true for Checked exceptions?
+4
+1) Methods that generate checked exceptions must declare that they throw them
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+Which is an example of a blocking method?
+4
+1) ServerSocket accept()
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+Which of the following is true about Threads?
+4
+1) Enables two or more tasks to execute concurrently within a single process
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is an advantage to extending Thread?
+4
+1) Can call Thread methods directly in the class(more flexibility)
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is an advantage of implementing Runnable?
+4
+1) Allows you to still extend another class
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is a property of the Decorator Design Pattern?
+4
+1) Extend or modify the behavior of objects at runtime
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is a property of the Decorator Design Pattern?
+4
+1) Modify individual instances of a class without changing others
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is a property of the Factory Design Pattern?
+4
+1) Create different objects, without knowing which ones you need beforehand, at runtime.
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+How do you implement a Factory Design Pattern?
+4
+1) Create a “static” class to return type of object needed.
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+
+
+
+
+
+
+
+
