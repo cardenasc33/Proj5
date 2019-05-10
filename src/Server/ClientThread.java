@@ -1,10 +1,13 @@
 package Server;
 
+import Main.NetworkObject;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.function.Consumer;
 
 /**
@@ -62,19 +65,25 @@ public class ClientThread extends Thread implements Serializable {
         // thread constantly reading object input
         // this reads objects sent to server by the client
         while (!exit) {
-            /*
+
             try {
                 socket.setTcpNoDelay(true);
-                // Constantly listen for cards (plays) received from client:
                 while (true) {
-
-                    Card data = (Card) in.readObject();
-                    data.setConnId(connId); // put connection id into card/play
+                    NetworkObject data = (NetworkObject) in.readObject();
+                    //data.setConnId(connId); // put connection id into card/play
                     this.callback.accept(data);
 
                 }
+            } catch (SocketException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
-            */
+            // Constantly listen for cards (plays) received from client:
+
+
         }
 
         System.out.println("[CLIENT] main.Client.main.Client thread stopped");
