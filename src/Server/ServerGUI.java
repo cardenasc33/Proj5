@@ -30,7 +30,7 @@ public class ServerGUI extends Application {
                 System.out.println("Questions not finalized");
                 return;
             }
-            if (currentQ == questions.size()) {
+            if (currentQ == questions.size() - 1) {
                 // CODE TO FINISH GAME
                 return;
             }

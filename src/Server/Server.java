@@ -71,6 +71,7 @@ public class Server extends Main.Connection {
 
                         i++; // increment connection id
                     } catch (IOException e) {
+                        System.out.println(e.getStackTrace());
                         //callback.accept("main.Server.Connection Closed");
                     }
 
