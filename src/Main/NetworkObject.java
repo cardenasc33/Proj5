@@ -2,21 +2,19 @@ package Main;
 
 import java.io.Serializable;
 
-/*
-I'm just using this information as a base for what I think we'll need in the future.
-Nothing here will be set in stone.
- */
-
 public class NetworkObject implements Serializable {
     private String serverMessage;
-    private Questions q;
+    private Question question;
     private int playerScore;
     private String playerAnswer;
 
+    /*
+    Default network object. In case we ever need that.
+     */
     public NetworkObject(){
         serverMessage = null;
         playerScore = -1;
-        q = null;
+        question = null;
         playerAnswer = null;
     }
 
@@ -29,23 +27,27 @@ public class NetworkObject implements Serializable {
         playerAnswer = answer;
     }
 
-    //TODO: Constructor for a server-sent network object
-
-    public void setServerMessage(String str){
-        serverMessage = str;
+    /*
+    Constructor for server-sent network object
+     */
+    public NetworkObject(Question q, int pScore, String message){
+        playerScore = pScore;
+        question = q;
+        serverMessage = message;
+        playerAnswer = null;
     }
 
     public int getPlayerScore() { return playerScore;}
     public String getPlayerAnswer() { return playerAnswer;}
 
     /*
-    NOTE: No setters for player score or player answer. Setting those fields will be
-          the responsibility of the server and client respectively
+    NOTE: No setters for player score, player answer, or server message.
+    Setting those fields will be the responsibility of the server and client respectively
      */
 
     public String getServerMessage() { return serverMessage; }
 
-    public void loadQuestions(Questions ques){ q = ques; }
+    public void loadQuestions(Question q){ question = q; }
 
-    public Questions getQuestions() { return q;}
+    public Question getQuestions() { return question;}
 }
