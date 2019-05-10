@@ -6,18 +6,7 @@ public class NetworkObject implements Serializable {
     private String serverMessage;
     private Question question;
     private int playerScore;
-    private String playerAnswer;
     private boolean correctness;
-
-    /*
-    Default network object. In case we ever need that.
-     */
-    public NetworkObject(){
-        serverMessage = null;
-        playerScore = -1;
-        question = null;
-        playerAnswer = null;
-    }
 
     /*
     Constructor for a client-sent network object
@@ -35,11 +24,9 @@ public class NetworkObject implements Serializable {
         playerScore = pScore;
         question = q;
         serverMessage = message;
-        playerAnswer = null;
     }
 
     public int getPlayerScore() { return playerScore;}
-    public String getPlayerAnswer() { return playerAnswer;}
 
     /*
     NOTE: No setters for player score, player answer, or server message.
