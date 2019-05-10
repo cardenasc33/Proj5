@@ -1,5 +1,6 @@
 package Server.ServerGUIComponents;
 
+import Main.Question;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -8,16 +9,14 @@ import java.util.ArrayList;
 
 public class QuestionBox extends VBox {
 
-    TextField question;
-    ArrayList<TextField> choices;
-    int numChoices;
+    TextField question = new TextField();;
+    ArrayList<TextField> choices = new ArrayList<>();;
+    int numChoices = 4;
+    Question questionObj;
 
-    public QuestionBox(int numChoices) {
+    private void init() {
         this.setPadding(new Insets(5));
         this.setMinWidth(250);
-        this.choices = new ArrayList<>();
-        this.numChoices = numChoices;
-        this.question = new TextField();
         this.question.setPromptText("Enter question");
         this.getChildren().add(question);
 
@@ -29,25 +28,22 @@ public class QuestionBox extends VBox {
         }
     }
 
-    public String getQuestion() {
-        return this.question.getText();
-    }
-
-    public void setQuestion(String question) {
-        this.question.setText(question);
-    }
-
-    public ArrayList<String> getChoices() {
-        ArrayList<String> choices = new ArrayList<>();
-        for (TextField choice : this.choices) {
-            choices.add(choice.getText());
+    public QuestionBox(Question question) {
+        init();
+        this.question.setText(question.getQuestion());
+        for (int i = 0; i < numChoices; i++) {
+            choices.get(i).setText(question.getAlternatives()[i]);
+            if (i == question.getAnswer() - 1) {
+                choices.get(i).setStyle("-fx-background-color: yellow;");
+            }
         }
-        return choices;
     }
 
-    public void setChoices(ArrayList<String> choices) {
-        for (int i = 0; i < choices.size(); i++) {
-            this.choices.get(i).setText(choices.get(i));
-        }
+    public QuestionBox() {
+        init();
+    }
+
+    public Question getQuestionObj() {
+        return this.questionObj;
     }
 }

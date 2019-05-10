@@ -37,7 +37,6 @@ public class GUI extends Application {
             Platform.runLater(()->{
                 NetworkObject obj = (NetworkObject) data;
                 question.setText(obj.getServerMessage());
-
                 console.appendText("Connected to server...\n");
             });
         }
