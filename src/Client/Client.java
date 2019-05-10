@@ -54,24 +54,19 @@ public class Client extends Connection {
         System.out.println("[CLIENT]: Stopping connection");
     }
 
-    public void connect() {
+    public void connect() throws IOException {
         System.out.println("[CLIENT] Attempting to connect...");
         System.out.println("[CLIENT] IP:   " + this.ip);
         System.out.println("[CLIENT] Port: " + this.port);
 
-        try {
-            System.out.println("[CLIENT] Creating socket...");
-            this.conn.setSocket(new Socket(ip, port));
-            this.conn.getSocket().setTcpNoDelay(true);
-            this.conn.setIn(new ObjectInputStream(this.conn.getSocket().getInputStream()));
-            this.conn.setOut(new ObjectOutputStream(this.conn.getSocket().getOutputStream()));
-            System.out.println("[CLIENT] Starting connection...");
-            this.conn.start();
-        } catch (IOException e) {
-            System.out.println("[CLIENT] Unable to connect");
-            System.out.println(e.getLocalizedMessage());
-            e.printStackTrace();
-        }
+        System.out.println("[CLIENT] Creating socket...");
+        this.conn.setSocket(new Socket(ip, port));
+        this.conn.getSocket().setTcpNoDelay(true);
+        this.conn.setIn(new ObjectInputStream(this.conn.getSocket().getInputStream()));
+        this.conn.setOut(new ObjectOutputStream(this.conn.getSocket().getOutputStream()));
+        System.out.println("[CLIENT] Starting connection...");
+        this.conn.start();
+
         System.out.println("[CLIENT] Connected to server.");
         System.out.println("");
     }

@@ -30,7 +30,7 @@ public class GUI extends Application {
     private boolean guiLoaded = false;
     private static NetworkObject clientComm;
     private static String[] questions;
-    private int playerChoice;
+    private int playerChoice = -1;
 
     private Client player = new Client("127.0.0.1", 5555, (data->{
         if (!gameStarted && guiLoaded){
@@ -40,6 +40,7 @@ public class GUI extends Application {
                 console.appendText("Connected to server...\n");
             });
         }
+
     }));
 
     public static void main(String[] args){
@@ -63,7 +64,13 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        player.connect();
+
+        try{
+            player.connect();
+        }catch(Exception e) {
+            System.out.println("Error. No server is running. Please close client window and restart when server is running.");
+        }
+
         question = new Label("Question Template goes here");
         question.setFont(new Font("Comic Sans" /*fight me*/, 30));
 
@@ -76,7 +83,9 @@ public class GUI extends Application {
         sendChoice.setStyle("-fx-font-weight: bold");
         sendChoice.setOnAction(e->{
             if (!gameStarted)
-                console.appendText("Cannot send choice. Game has not started yet...\n");
+                console.appendText("Cannot send choice. Game has not started yet.\n");
+            if (gameStarted && playerChoice == -1)
+                console.appendText("Please select a choice to send to the server\n");
         });
 
 
@@ -122,16 +131,12 @@ public class GUI extends Application {
 
     private void updateAnswerSelection(int selected, TextArea[] c){
         for(int i = 0; i < c.length; i++){
-            if (i == selected)
+            if (i == selected) {
                 c[i].setText(questions[i] + "\n [CHOICE SELECTED]");
-            else
+                playerChoice = i;
+            }else
                 c[i].setText(questions[i]);
         }
     }
 
-    private void updateGameState(){
-        Platform.runLater(()->{
-
-        });
-    }
 }
