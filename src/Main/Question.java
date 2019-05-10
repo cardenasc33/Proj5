@@ -11,12 +11,24 @@ public class Question {
         this.answer = answer;
     }
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
     public String getQuestion() {
         return question;
     }
 
+    public void setAlternatives(String[] alternatives) {
+        this.alternatives = alternatives;
+    }
+
     public String[] getAlternatives() {
         return alternatives;
+    }
+
+    public void setAnswer(int answer) {
+        this.answer = answer;
     }
 
     public int getAnswer() {
