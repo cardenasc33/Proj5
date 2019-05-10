@@ -11,7 +11,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import Main.NetworkObject;
 import Main.Question;
@@ -48,10 +47,11 @@ public class GUI extends Application {
         Platform.runLater(()->{
             questionTitle.setText(q.getQuestion());
             for(int i = 0; i < choices.length; i++){
-                choices[i].setText(q.getAlternatives()[i]);
+                answers[i] = q.getAlternatives()[i];
             }
             if (serverMessage != null)
                 console.appendText(serverMessage);
+            updateAnswers();
 
             correctAnswer = q.getAnswerAsString();
         });
@@ -125,7 +125,7 @@ public class GUI extends Application {
 
             final int WEIRD_LAMBDA_WORK_AROUND = i;
             choices[i].setOnMouseClicked(e ->{
-                updateAnswerSelection(WEIRD_LAMBDA_WORK_AROUND, choices);
+                updateAnswerSelection(WEIRD_LAMBDA_WORK_AROUND);
             });
         }
 
@@ -145,13 +145,19 @@ public class GUI extends Application {
         }
     }
 
-    private void updateAnswerSelection(int selected, TextArea[] c){
-        for(int i = 0; i < c.length; i++){
+    private void updateAnswerSelection(int selected){
+        for(int i = 0; i < choices.length; i++){
             if (i == selected) {
-                c[i].setText(answers[i] + "\n [CHOICE SELECTED]");
+                choices[i].setText(answers[i] + "\n [CHOICE SELECTED]");
                 playerAnswer = answers[i];
             }else
-                c[i].setText(answers[i]);
+                choices[i].setText(answers[i]);
+        }
+    }
+
+    private void updateAnswers(){
+        for(int i = 0; i < answers.length; i++){
+            choices[i].setText(answers[i]);
         }
     }
 
