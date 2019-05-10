@@ -1,8 +1,10 @@
 package Server;
 
+import Client.Client;
 import javafx.application.Platform;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -70,6 +72,12 @@ public class Server extends Main.Connection {
         setRunning(true);
         System.out.println("[SERVER] Starting server...");
         this.conn.start();
+    }
+
+    public void sendToAll(Serializable o) {
+        for (ClientThread ct : connections) {
+            ct.send(o);
+        }
     }
 
     public void disconnect(){

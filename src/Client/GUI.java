@@ -61,6 +61,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        player.connect();
         question = new Label("Question Template goes here");
         question.setFont(new Font("Comic Sans" /*fight me*/, 30));
 

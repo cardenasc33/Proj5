@@ -39,6 +39,8 @@ public class NetworkObject implements Serializable {
         serverMessage = str;
     }
 
+    public String getServerMessage() { return serverMessage; }
+
     public void updatePlayerScore(int p, int s){
         playerScores[p] += s;
     }
