@@ -26,7 +26,7 @@ public class ServerGUI extends Application {
     private void initSendQuestionButton() {
         sendQuestion.setOnAction((event) -> {
             NetworkObject o = new NetworkObject();
-            o.setServerMessage("HELLO FROM SERVER");
+            o.set
             server.sendToAll(o);
         });
     }

@@ -50,4 +50,6 @@ public class NetworkObject implements Serializable {
     public void loadQuestions(Question q){ question = q; }
 
     public Question getQuestion() { return question;}
+
+    public void setQueston(Question q) { this.question = q; }
 }
