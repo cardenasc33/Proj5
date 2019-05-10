@@ -10,8 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ServerGUI extends Application {
 
@@ -31,7 +33,14 @@ public class ServerGUI extends Application {
                 return;
             }
             if (currentQ == questions.size() - 1) {
-                // CODE TO FINISH GAME
+                NetworkObject networkObject = new NetworkObject();
+                networkObject.setGameOver(true);
+                String msg = "";
+                for (Map.Entry<Integer, Integer> p : server.getConnId2Score().entrySet()) {
+                    msg += "Player " + p.getKey() + ": Score " + p.getValue();
+                }
+                networkObject.setServerMessage(msg);
+                server.sendToAll(networkObject);
                 return;
             }
             NetworkObject o = new NetworkObject(questions.get(currentQ), -1, "");

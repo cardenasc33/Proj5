@@ -7,6 +7,11 @@ public class NetworkObject implements Serializable {
     private Question question;
     private int playerScore;
     private boolean correctness;
+    private boolean gameOver = false;
+
+    public NetworkObject() {
+
+    }
 
     /*
     Constructor for a client-sent network object
@@ -33,6 +38,10 @@ public class NetworkObject implements Serializable {
     Setting those fields will be the responsibility of the server and client respectively
      */
 
+    public void setServerMessage(String msg) {
+        this.serverMessage = msg;
+    }
+
     public String getServerMessage() { return serverMessage; }
 
     public void loadQuestion(Question q){ question = q; }
@@ -42,4 +51,12 @@ public class NetworkObject implements Serializable {
     public void setQueston(Question q) { this.question = q; }
 
     public boolean getCorrectness() {return correctness;}
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
 }
