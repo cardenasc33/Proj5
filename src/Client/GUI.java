@@ -14,15 +14,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import Main.NetworkObject;
+import Main.Question;
 
 public class GUI extends Application {
 
     private BorderPane layout;
-    private Label question;
+    private Label questionTitle;
     private HBox displayChoices;
     private HBox bottomArea;
     private TextArea choices[];
-    private VBox playerScores;
     private Button sendChoice;
     private TextArea console;
 
@@ -33,13 +33,23 @@ public class GUI extends Application {
     private String playerAnswer = null;
 
     private Client player = new Client("127.0.0.1", 5555, (data->{
+
+        NetworkObject n = (NetworkObject) data;
+        Question q = n.getQuestionObject();
         if (!gameStarted && guiLoaded){
             Platform.runLater(()->{
-                NetworkObject obj = (NetworkObject) data;
-                question.setText(obj.getQuestion().getQuestion());
-                console.appendText("Connected to server...\n");
+                questionTitle.setText(n.getQuestionObject().getQuestion());
+                console.appendText("Game has started...\n");
             });
         }
+
+        Platform.runLater(()->{
+            questionTitle.setText(q.getQuestion());
+            for(int i = 0; i < choices.length; i++){
+                choices[i].setText(q.getAlternatives()[i]);
+            }
+            console.appendText(n.getServerMessage());
+        });
 
     }));
 
@@ -65,17 +75,8 @@ public class GUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        try{
-            player.connect();
-        }catch(Exception e) {
-            System.out.println("Error. No server is running. Please close client window and restart when server is running.");
-        }
-
-        question = new Label("Question Template goes here");
-        question.setFont(new Font("Comic Sans" /*fight me*/, 30));
-
-        playerScores = new VBox();
-        playerScores.setPadding(new Insets(0, 25, 0, 0));
+        questionTitle = new Label("Question Template goes here");
+        questionTitle.setFont(new Font("Comic Sans" /*fight me*/, 30));
 
         sendChoice = new Button("Send");
         sendChoice.setPrefSize(100, 50);
@@ -120,21 +121,20 @@ public class GUI extends Application {
             });
         }
 
-        playerScores.getChildren().add(new Label("Scores:"));
-        playerScores.getChildren().add(new Label("Player 1:"));
-        playerScores.getChildren().add(new Label("Player 2:"));
-        playerScores.getChildren().add(new Label("Player 3:"));
-        playerScores.getChildren().add(new Label("Player 4:"));
-
         layout = new BorderPane();
-        layout.setTop(question); layout.setAlignment(question, Pos.TOP_CENTER);
+        layout.setTop(questionTitle); layout.setAlignment(questionTitle, Pos.TOP_CENTER);
         layout.setBottom(bottomArea); layout.setAlignment(sendChoice, Pos.BOTTOM_CENTER); layout.setAlignment(console, Pos.BOTTOM_RIGHT);
         layout.setCenter(displayChoices); layout.setAlignment(displayChoices, Pos.CENTER);
-        layout.setRight(playerScores);
         primaryStage.setScene(new Scene(layout, 600, 250));
         primaryStage.show();
 
         console.appendText("Waiting to connect to server...\n");
+        try{
+            player.connect();
+            console.appendText("Connected to server. Waiting for game to start.");
+        }catch(Exception e) {
+            System.out.println("Error. No server is running. Please close client window and restart when server is running.");
+        }
     }
 
     private void updateAnswerSelection(int selected, TextArea[] c){
