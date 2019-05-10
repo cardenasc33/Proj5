@@ -29,8 +29,8 @@ public class GUI extends Application {
     private boolean gameStarted = false;
     private boolean guiLoaded = false;
     private static NetworkObject clientComm;
-    private static String[] questions;
-    private int playerChoice = -1;
+    private static String[] answers;
+    private String playerAnswer = null;
 
     private Client player = new Client("127.0.0.1", 5555, (data->{
         if (!gameStarted && guiLoaded){
@@ -53,11 +53,11 @@ public class GUI extends Application {
         We also want to start the server here
          */
         Platform.runLater(()->{
-            questions = new String[4];
-            questions[0] = "Template for answer choice 1";
-            questions[1] = "Template for answer choice 2";
-            questions[2] = "Template for answer choice 3";
-            questions[3] = "Template for answer choice 4";
+            answers = new String[4];
+            answers[0] = "Template for answer choice 1";
+            answers[1] = "Template for answer choice 2";
+            answers[2] = "Template for answer choice 3";
+            answers[3] = "Template for answer choice 4";
             guiLoaded = true;
         });
     }
@@ -84,8 +84,16 @@ public class GUI extends Application {
         sendChoice.setOnAction(e->{
             if (!gameStarted)
                 console.appendText("Cannot send choice. Game has not started yet.\n");
-            if (gameStarted && playerChoice == -1)
+            if (gameStarted && playerAnswer == null)
                 console.appendText("Please select a choice to send to the server\n");
+            else{
+                NetworkObject n = new NetworkObject(playerAnswer);
+                try{
+                    player.send(n);
+                }catch(Exception e2){
+                    System.out.println("Error. Unable to send player answer to server.");
+                }
+            }
         });
 
 
@@ -100,7 +108,7 @@ public class GUI extends Application {
         displayChoices.setPadding(new Insets(0, 25, 0, 25));
         choices = new TextArea[4];
         for (int i = 0; i < 4; i++) {
-            choices[i] = new TextArea(questions[i]);
+            choices[i] = new TextArea(answers[i]);
             choices[i].setEditable(false);
             displayChoices.getChildren().add(choices[i]);
             choices[i].setWrapText(true);
@@ -132,10 +140,10 @@ public class GUI extends Application {
     private void updateAnswerSelection(int selected, TextArea[] c){
         for(int i = 0; i < c.length; i++){
             if (i == selected) {
-                c[i].setText(questions[i] + "\n [CHOICE SELECTED]");
-                playerChoice = i;
+                c[i].setText(answers[i] + "\n [CHOICE SELECTED]");
+                playerAnswer = answers[i];
             }else
-                c[i].setText(questions[i]);
+                c[i].setText(answers[i]);
         }
     }
 

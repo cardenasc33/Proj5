@@ -1,7 +1,6 @@
 package Main;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 /*
 I'm just using this information as a base for what I think we'll need in the future.
@@ -9,40 +8,42 @@ Nothing here will be set in stone.
  */
 
 public class NetworkObject implements Serializable {
-    private HashMap<Integer, String> playerInfo;
     private String serverMessage;
     private Questions q;
-    private int[] playerScores;
+    private int playerScore;
+    private String playerAnswer;
 
     public NetworkObject(){
-        playerInfo = new HashMap<>();
         serverMessage = null;
-        playerScores = new int[4];
+        playerScore = -1;
         q = null;
+        playerAnswer = null;
     }
 
     /*
-    Used for setting up the network object for each round
+    Constructor for a client-sent network object
      */
-    public NetworkObject(int i){
-        playerInfo = new HashMap<>();
+    public NetworkObject(String answer){
+        playerScore = -1;
         serverMessage = null;
-        playerScores = new int[4];
+        playerAnswer = answer;
     }
 
-    public void addPlayerInfo(int p, String message){
-       playerInfo.put(p, message);
-    }
+    //TODO: Constructor for a server-sent network object
 
     public void setServerMessage(String str){
         serverMessage = str;
     }
 
-    public String getServerMessage() { return serverMessage; }
+    public int getPlayerScore() { return playerScore;}
+    public String getPlayerAnswer() { return playerAnswer;}
 
-    public void updatePlayerScore(int p, int s){
-        playerScores[p] += s;
-    }
+    /*
+    NOTE: No setters for player score or player answer. Setting those fields will be
+          the responsibility of the server and client respectively
+     */
+
+    public String getServerMessage() { return serverMessage; }
 
     public void loadQuestions(Questions ques){ q = ques; }
 

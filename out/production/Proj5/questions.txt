@@ -1,79 +1,79 @@
 What is a socket?
 4
 1) An endpoint of communication between two machines; reading and writing of data happens here
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) A design pattern
+3) A UML diagram
+4) A primary way to create a process
 1
 What is the role for a ServerSocket?
 4
 1) Gets a port to listen to; listens for connections
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) To display data from a database
+3) To close a process
+4) To run queries to a database
 1
 Which of the following is true for Checked exceptions?
 4
 1) Methods that generate checked exceptions must declare that they throw them
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) Checked exceptions do not require a throw
+3) Check exception is not a form of exception
+4) Checked exceptions are not used in Java
 1
 Which is an example of a blocking method?
 4
 1) ServerSocket accept()
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) A button call
+3) System.out.print
+4) main
 1
 Which of the following is true about Threads?
 4
 1) Enables two or more tasks to execute concurrently within a single process
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) There is no way to synchronize a thread
+3) Extending Thread class is not one of the ways to create thread
+4) Implementing Runnable is not a way to create thread
 1
 What is an advantage to extending Thread?
 4
 1) Can call Thread methods directly in the class(more flexibility)
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) There are no advantages
+3) Allows you to extend another class
+4) The thread is not able to close
 1
 What is an advantage of implementing Runnable?
 4
 1) Allows you to still extend another class
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) Able to call methods from the Thread class
+3) You can call Thread.close() from the Thread class
+4) There are no advantages
 1
 What is a property of the Decorator Design Pattern?
 4
 1) Extend or modify the behavior of objects at runtime
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) You are able change all components at the same time
+3) Allows you to connect to a database
+4) It is a primitive type
 1
 What is a property of the Decorator Design Pattern?
 4
 1) Modify individual instances of a class without changing others
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) Allows you to connect to a database
+3) It is a primitive type
+4) It is a thread
 1
 What is a property of the Factory Design Pattern?
 4
 1) Create different objects, without knowing which ones you need beforehand, at runtime.
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) It is an array
+3) It is a socket
+4) It is not a design pattern
 1
 How do you implement a Factory Design Pattern?
 4
 1) Create a “static” class to return type of object needed.
-2) Wrong answer
-3) Wrong answer
-4) Wrong answer
+2) You call the thread class
+3) You implement Object
+4) Use Autoboxing
 1
 
 
