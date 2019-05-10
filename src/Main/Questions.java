@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Questions {
     private ArrayList<Question> questions = new ArrayList<>();
 
-    //This should be written more efficiently! This is not good practise! Just a quick prototype.
     public Questions(String filename)  {
         try {
             FileReader file = new FileReader(filename);

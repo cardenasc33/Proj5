@@ -1,0 +1,7 @@
+Question String
+(Int)Number of alternative answers
+1)Choice1 (denoted with ")" )
+2)Choice2
+3)Choice3
+4)Choice4
+(Int)Correct Choice
