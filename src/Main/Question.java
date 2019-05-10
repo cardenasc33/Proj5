@@ -10,7 +10,7 @@ public class Question {
         this.question = question;
         this.alternatives = alternatives;
         this.answer = answer;
-        this.answerString = alternatives[answer]; //String representation for corrent answer
+        this.answerString = alternatives[answer - 1]; //String representation for corrent answer
     }
 
     public void setQuestion(String question) {
@@ -46,7 +46,7 @@ public class Question {
             print += alternative + "\n";
         }
         print += "Answer: Choice " + answer + "\n";
-        print += alternatives[getAnswer()] + "\n"; //Get string value of the correct answer
+        print += alternatives[getAnswer() - 1] + "\n"; //Get string value of the correct answer
         return print;
     }
 }
