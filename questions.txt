@@ -1,24 +1,24 @@
 What is a socket?
 4
-1) An endpoint of communication between two machines; reading and writing of data happens here
-2) A design pattern
+1) A design pattern
+2) An endpoint of communication between two machines; reading and writing of data happens here
 3) A UML diagram
 4) A primary way to create a process
-1
+2
 What is the role for a ServerSocket?
 4
-1) Gets a port to listen to; listens for connections
+1) To run queries to a database
 2) To display data from a database
 3) To close a process
-4) To run queries to a database
-1
+4) Gets a port to listen to; listens for connections
+4
 Which of the following is true for Checked exceptions?
 4
-1) Methods that generate checked exceptions must declare that they throw them
+1) Checked exceptions are not used in Java
 2) Checked exceptions do not require a throw
 3) Check exception is not a form of exception
-4) Checked exceptions are not used in Java
-1
+4) Methods that generate checked exceptions must declare that they throw them
+4
 Which is an example of a blocking method?
 4
 1) ServerSocket accept()
