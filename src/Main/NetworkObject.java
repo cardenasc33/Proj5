@@ -11,23 +11,23 @@ Nothing here will be set in stone.
 public class NetworkObject implements Serializable {
     private HashMap<Integer, String> playerInfo;
     private String serverMessage;
-    private String correctChoice;
+    private int correctChoice;
     private int[] playerScores;
 
     public NetworkObject(){
         playerInfo = new HashMap<>();
         serverMessage = null;
-        correctChoice = null;
+        correctChoice = -1;
         playerScores = new int[4];
     }
 
     /*
     Used for setting up the network object for each round
      */
-    public NetworkObject(String str){
+    public NetworkObject(int i){
         playerInfo = new HashMap<>();
         serverMessage = null;
-        correctChoice = str;
+        correctChoice = i;
         playerScores = new int[4];
     }
 
