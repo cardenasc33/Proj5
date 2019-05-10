@@ -49,5 +49,5 @@ public class NetworkObject implements Serializable {
 
     public void loadQuestions(Question q){ question = q; }
 
-    public Question getQuestions() { return question;}
+    public Question getQuestion() { return question;}
 }
