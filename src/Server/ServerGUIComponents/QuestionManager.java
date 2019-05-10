@@ -53,7 +53,6 @@ public class QuestionManager extends GridPane {
         this.add(addQ, 0, 0);
         this.add(upload, 1, 0);
         this.add(scrollPane, 0, 1);
-
         initUploadButton();
     }
 
