@@ -27,7 +27,6 @@ public class GUI extends Application {
 
     private boolean gameStarted = false;
     private boolean guiLoaded = false;
-    private static NetworkObject clientComm;
     private static String[] answers;
     private String playerAnswer = null;
     private String correctAnswer;
@@ -42,6 +41,7 @@ public class GUI extends Application {
                 questionTitle.setText(n.getQuestionObject().getQuestion());
                 console.appendText("Game has started...\n");
                 gameStarted = true;
+                playerAnswer = null;
             });
         }
 
@@ -51,7 +51,7 @@ public class GUI extends Application {
                 answers[i] = q.getAlternatives()[i];
             }
             if (serverMessage != null)
-                console.appendText(serverMessage);
+                console.appendText(serverMessage + "\n");
             updateAnswers();
 
             correctAnswer = q.getAnswerAsString();
@@ -65,9 +65,6 @@ public class GUI extends Application {
 
     @Override
     public void init(){
-        /*
-        We also want to start the server here
-         */
         Platform.runLater(()->{
             answers = new String[4];
             answers[0] = "Template for answer choice 1";
@@ -100,6 +97,8 @@ public class GUI extends Application {
                 NetworkObject n = new NetworkObject(correctness);
                 try{
                     player.send(n);
+                    playerAnswer = null;
+                    updateAnswerSelection(-1);
                 }catch(Exception e2){
                     System.out.println("Error. Unable to send player answer to server.");
                 }
