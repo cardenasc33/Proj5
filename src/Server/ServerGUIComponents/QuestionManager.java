@@ -16,7 +16,6 @@ import java.util.Arrays;
 public class QuestionManager extends GridPane {
 
     Stage ownerWindow;
-    ArrayList<Question> questions;
     ArrayList<QuestionBox> questionOptions;
     VBox questionContainer = new VBox();
     ScrollPane scrollPane = new ScrollPane(questionContainer);
@@ -35,7 +34,6 @@ public class QuestionManager extends GridPane {
                     QuestionBox qb = new QuestionBox(t);
                     addQuestion(qb);
                 }
-                questions = q.getQuestions();
             }
             catch (Exception e) {
                 System.out.println("Error loading file");
@@ -64,5 +62,13 @@ public class QuestionManager extends GridPane {
 
     public void clearQuestions() {
         questionOptions.clear();
+    }
+
+    public ArrayList<Question> getQuestionObjs() {
+        ArrayList<Question> q = new ArrayList<>();
+        for (QuestionBox qb : questionOptions) {
+            q.add(qb.getQuestionObj());
+        }
+        return q;
     }
 }

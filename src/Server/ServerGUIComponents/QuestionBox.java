@@ -2,6 +2,7 @@ package Server.ServerGUIComponents;
 
 import Main.Question;
 import javafx.geometry.Insets;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -44,6 +45,24 @@ public class QuestionBox extends VBox {
     }
 
     public Question getQuestionObj() {
+        ArrayList<String> alternatives = new ArrayList<>();
+        for (TextField t : choices) {
+            alternatives.add(t.getText());
+        }
+        questionObj.setAlternatives((String[])alternatives.toArray());
+        questionObj.setQuestion(question.getText());
         return this.questionObj;
+    }
+
+    public void setQuestion(String q) {
+        question.setText(q);
+        questionObj.setQuestion(q);
+    }
+
+    public void setChoices(ArrayList<String> choices) {
+         for (int i = 0; i < numChoices; i++) {
+             this.choices.get(i).setText(choices.get(i));
+         }
+        questionObj.setAlternatives((String[])choices.toArray());
     }
 }
