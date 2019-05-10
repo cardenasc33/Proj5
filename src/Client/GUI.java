@@ -31,6 +31,7 @@ public class GUI extends Application {
     private static NetworkObject clientComm;
     private static String[] answers;
     private String playerAnswer = null;
+    private String correctAnswer;
 
     private Client player = new Client("127.0.0.1", 5555, (data->{
 
@@ -51,6 +52,8 @@ public class GUI extends Application {
             }
             if (serverMessage != null)
                 console.appendText(serverMessage);
+
+            correctAnswer = q.getAnswerAsString();
         });
 
     }));
@@ -90,7 +93,10 @@ public class GUI extends Application {
             if (gameStarted && playerAnswer == null)
                 console.appendText("Please select a choice to send to the server\n");
             else{
-                NetworkObject n = new NetworkObject(playerAnswer);
+                boolean correctness = false;
+                if (playerAnswer.equals(correctAnswer))
+                    correctness = true;
+                NetworkObject n = new NetworkObject(correctness);
                 try{
                     player.send(n);
                 }catch(Exception e2){
