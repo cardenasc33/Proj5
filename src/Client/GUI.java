@@ -41,6 +41,7 @@ public class GUI extends Application {
             Platform.runLater(()->{
                 questionTitle.setText(n.getQuestionObject().getQuestion());
                 console.appendText("Game has started...\n");
+                gameStarted = true;
             });
         }
 
