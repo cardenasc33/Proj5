@@ -7,6 +7,7 @@ public class NetworkObject implements Serializable {
     private Question question;
     private int playerScore;
     private String playerAnswer;
+    private boolean correctness;
 
     /*
     Default network object. In case we ever need that.
@@ -21,10 +22,10 @@ public class NetworkObject implements Serializable {
     /*
     Constructor for a client-sent network object
      */
-    public NetworkObject(String answer){
+    public NetworkObject(boolean c){
         playerScore = -1;
         serverMessage = null;
-        playerAnswer = answer;
+        correctness = c;
     }
 
     /*
@@ -52,4 +53,6 @@ public class NetworkObject implements Serializable {
     public Question getQuestionObject() { return question;}
 
     public void setQueston(Question q) { this.question = q; }
+
+    public boolean getCorrectness() {return correctness;}
 }
