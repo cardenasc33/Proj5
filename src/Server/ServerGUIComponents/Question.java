@@ -1,4 +1,4 @@
-package src.Server.ServerGUIComponents;
+package Server.ServerGUIComponents;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -43,9 +43,9 @@ class Questions {
     private ArrayList<Question> questions = new ArrayList<>();
 
     //This should be written more efficiently! This is not good practise! Just a quick prototype.
-    public Questions()  {
+    public Questions(String filename)  {
         try {
-            FileReader file = new FileReader("questions.txt");
+            FileReader file = new FileReader(filename);
             BufferedReader reader = new BufferedReader(file);
             Scanner scanner = new Scanner(reader);
 
