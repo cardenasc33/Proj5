@@ -1,127 +1,85 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww9680\viewh18000\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+What is a socket?
+4
+1) An endpoint of communication between two machines; reading and writing of data happens here
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is the role for a ServerSocket?
+4
+1) Gets a port to listen to; listens for connections
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+Which of the following is true for Checked exceptions?
+4
+1) Methods that generate checked exceptions must declare that they throw them
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+Which is an example of a blocking method?
+4
+1) ServerSocket accept()
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+Which of the following is true about Threads?
+4
+1) Enables two or more tasks to execute concurrently within a single process
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is an advantage to extending Thread?
+4
+1) Can call Thread methods directly in the class(more flexibility)
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is an advantage of implementing Runnable?
+4
+1) Allows you to still extend another class
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is a property of the Decorator Design Pattern?
+4
+1) Extend or modify the behavior of objects at runtime
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is a property of the Decorator Design Pattern?
+4
+1) Modify individual instances of a class without changing others
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+What is a property of the Factory Design Pattern?
+4
+1) Create different objects, without knowing which ones you need beforehand, at runtime.
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
+How do you implement a Factory Design Pattern?
+4
+1) Create a “static” class to return type of object needed.
+2) Wrong answer
+3) Wrong answer
+4) Wrong answer
+1
 
-\f0\fs24 \cf0 Prize Money\
-Category\
-Question\
-Right Answer\
-Wrong Answer1\
-Wrong Answer2\
-Wrong Answer3\
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 100\
-Networking and Exceptions\
-1. What is a socket?\
-A. An endpoint of communication between two machines; reading and writing of data happens here\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \
-200\
-Networking and Exceptions\
-2. What is the role for a ServerSocket? \
-A. Gets a port to listen to; listens for connections\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-300\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 Networking and Exceptions\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 3. Which of the following is true for Checked exceptions?\
-A. Methods that generate checked exceptions must declare that they throw them\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-400\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 Networking and Exceptions\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 4. Which is an example of a blocking method?\
-A. ServerSocket accept()\
-B. Wrong answer\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-500\
-Threading\
-5. Which of the following is true about Threads\
-A. Enables two or more tasks to execute concurrently within a single process\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-600\
-Threading \
-6. Name an advantage to extending Thread\
-A. Can call Thread methods directly in the class(more flexibility)\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-700\
-Threading\
-7. Name an advantage of implementing Runnable\
-A. Allows you to still extend another class\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-800\
-Decorator Design Pattern\
-8. What is a property of the Decorator Design Pattern?\
-A. Extend or modify the behavior of objects at runtime\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-900\
-Decorator Design Pattern\
-9. What is a property of the Decorator Design Pattern?\
-A. Modify individual instances of a class without changing others\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-1000\
-Factory Design Pattern\
-10. What is a property of the Factory Design Pattern?\
-A. Create different objects, without knowing which ones you need beforehand, at runtime.\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-1100\
-Factory Design Pattern\
-11. How do you implement a Factory Design Pattern?\
-A. Create a \'93static\'94 class to return type of object needed.\
-B. Wrong answer\
-B. Wrong answer\
-C. Wrong answer\
-D. Wrong answer\
-\
-\
-\
-\
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \
-\
-\
-}
+
+
+
+
+
+
+
