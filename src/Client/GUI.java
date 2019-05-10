@@ -52,7 +52,8 @@ public class GUI extends Application {
 
         if (!gameStarted && guiLoaded){
             Platform.runLater(()->{
-                questionTitle.setText(n.getQuestionObject().getQuestion());
+                sendChoice.setDisable(false);
+                questionTitle.setText(q.getQuestion());
                 console.appendText("Game has started...\n");
                 gameStarted = true;
                 playerAnswer = null;
@@ -113,12 +114,12 @@ public class GUI extends Application {
                     player.send(n);
                     playerAnswer = null;
                     updateAnswerSelection(-1);
+                    sendChoice.setDisable(true);
                 }catch(Exception e2){
                     System.out.println("Error. Unable to send player answer to server.");
                 }
             }
         });
-
 
         console = new TextArea();
         console.setEditable(false);
