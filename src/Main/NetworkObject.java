@@ -49,7 +49,7 @@ public class NetworkObject implements Serializable {
 
     public void loadQuestion(Question q){ question = q; }
 
-    public Question getQuestion() { return question;}
+    public Question getQuestionObject() { return question;}
 
     public void setQueston(Question q) { this.question = q; }
 }
