@@ -35,6 +35,9 @@ public class GUI extends Application {
     private Client player = new Client("127.0.0.1", 5555, (data->{
         if (!gameStarted && guiLoaded){
             Platform.runLater(()->{
+                NetworkObject obj = (NetworkObject) data;
+                question.setText(obj.getServerMessage());
+
                 console.appendText("Connected to server...\n");
             });
         }

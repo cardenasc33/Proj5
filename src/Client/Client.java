@@ -38,7 +38,6 @@ public class Client extends Connection {
                         System.out.println("[CLIENT] Received main.GameState object, updating main.GUI.");
                         NetworkObject no = (NetworkObject)data;
                         System.out.println(no.getServerMessage());
-
                         callback.accept(data);
 
                     }
