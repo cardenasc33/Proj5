@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class QuestionManager extends GridPane {
 
@@ -69,5 +68,11 @@ public class QuestionManager extends GridPane {
             q.add(qb.getQuestionObj());
         }
         return q;
+    }
+
+    public void disableAll() {
+        for (QuestionBox qb : questionOptions) {
+            qb.disable();
+        }
     }
 }

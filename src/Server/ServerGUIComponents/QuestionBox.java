@@ -69,4 +69,13 @@ public class QuestionBox extends VBox {
          }
         questionObj.setAlternatives((String[])choices.toArray());
     }
+
+    public void disable() {
+        question.setEditable(false);
+        question.setDisable(true);
+        for (TextField f : choices) {
+            f.setEditable(false);
+            f.setDisable(true);
+        }
+    }
 }

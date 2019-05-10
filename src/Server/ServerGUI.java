@@ -18,6 +18,7 @@ public class ServerGUI extends Application {
     Server server = new Server(5555);
     QuestionManager qManag;
     int currentQ;
+    boolean finalized = false;
     Button finalizeButton = new Button("Finalize");
     Button sendQuestion = new Button("Send question");
 
@@ -25,15 +26,28 @@ public class ServerGUI extends Application {
 
     private void initSendQuestionButton() {
         sendQuestion.setOnAction((event) -> {
+            if (!finalized) {
+                System.out.println("Questions not finalized");
+                return;
+            }
+            if (currentQ == questions.size()) {
+                // CODE TO FINISH GAME
+                return;
+            }
             NetworkObject o = new NetworkObject();
             o.setQueston(questions.get(currentQ));
             currentQ++;
             server.sendToAll(o);
+            if (currentQ == questions.size() - 1) {
+                sendQuestion.setText("Finish");
+            }
         });
     }
 
     private void initFinalizeButton() {
         finalizeButton.setOnAction((event) -> {
+            qManag.disableAll();
+            finalized = true;
             this.questions = qManag.getQuestionObjs();
             this.currentQ = 0;
         });
