@@ -36,6 +36,7 @@ public class GUI extends Application {
 
         NetworkObject n = (NetworkObject) data;
         Question q = n.getQuestionObject();
+        String serverMessage = n.getServerMessage();
         if (!gameStarted && guiLoaded){
             Platform.runLater(()->{
                 questionTitle.setText(n.getQuestionObject().getQuestion());
@@ -48,7 +49,8 @@ public class GUI extends Application {
             for(int i = 0; i < choices.length; i++){
                 choices[i].setText(q.getAlternatives()[i]);
             }
-            console.appendText(n.getServerMessage());
+            if (serverMessage != null)
+                console.appendText(serverMessage);
         });
 
     }));
