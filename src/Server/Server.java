@@ -52,6 +52,7 @@ public class Server extends Main.Connection {
                             // What happens when server receives a main.Card from a client:
                             Platform.runLater(() -> {
                                 NetworkObject o = (NetworkObject)data;
+                                System.out.println("CORRECT? :"  + (o.getCorrectness() ? "YES" : "NO"));
                                 if (o.getCorrectness()) {
                                     if (!connId2Score.containsKey(currID) ){
                                         connId2Score.put(currID, 1);
@@ -115,5 +116,9 @@ public class Server extends Main.Connection {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public Map<Integer, Integer> getConnId2Score() {
+        return connId2Score;
     }
 }

@@ -34,8 +34,7 @@ public class ServerGUI extends Application {
                 // CODE TO FINISH GAME
                 return;
             }
-            NetworkObject o = new NetworkObject();
-            o.setQueston(questions.get(currentQ));
+            NetworkObject o = new NetworkObject(questions.get(currentQ), -1, "");
             currentQ++;
             server.sendToAll(o);
             if (currentQ == questions.size() - 1) {
