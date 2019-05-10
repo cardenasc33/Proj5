@@ -34,8 +34,18 @@ public class GUI extends Application {
     private Client player = new Client("127.0.0.1", 5555, (data->{
 
         NetworkObject n = (NetworkObject) data;
-        Question q = n.getQuestionObject();
         String serverMessage = n.getServerMessage();
+        if (n.isGameOver() == true){
+            questionTitle.setText("Game Over. Restart program to play again");
+            console.appendText(serverMessage);
+
+            sendChoice.setDisable(true);
+            for(int i = 0; i < choices.length; i++)
+                choices[i].setOnMouseClicked(e->{});
+        }
+
+        Question q = n.getQuestionObject();
+
         if (!gameStarted && guiLoaded){
             Platform.runLater(()->{
                 questionTitle.setText(n.getQuestionObject().getQuestion());
@@ -43,13 +53,6 @@ public class GUI extends Application {
                 gameStarted = true;
                 playerAnswer = null;
             });
-        }else if (n.isGameOver() == true){
-            questionTitle.setText("Game Over. Restart program to play again");
-            console.appendText(n.getServerMessage());
-
-            sendChoice.setDisable(true);
-            for(int i = 0; i < choices.length; i++)
-                choices[i].setOnMouseClicked(e->{});
         }
 
         Platform.runLater(()->{
