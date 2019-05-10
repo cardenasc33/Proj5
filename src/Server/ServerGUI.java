@@ -37,7 +37,7 @@ public class ServerGUI extends Application {
                 networkObject.setGameOver(true);
                 String msg = "";
                 for (Map.Entry<Integer, Integer> p : server.getConnId2Score().entrySet()) {
-                    msg += "Player " + p.getKey() + ": Score " + p.getValue();
+                    msg += "Player " + p.getKey() + ": Score " + p.getValue() + "\n";
                 }
                 networkObject.setServerMessage(msg);
                 server.sendToAll(networkObject);

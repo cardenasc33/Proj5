@@ -20,6 +20,7 @@ public class Server extends Main.Connection {
     private int port;
     private ArrayList<ClientThread> connections; // List of client connections
     private Map<Integer, Integer> connId2Score = new HashMap<>();
+    private boolean scoreboardInit = false;
 
     ServerSocket serverSocket;
 
@@ -51,15 +52,16 @@ public class Server extends Main.Connection {
                         ClientThread ct = new ClientThread(s, data -> {
                             // What happens when server receives a main.Card from a client:
                             Platform.runLater(() -> {
+                                if (!scoreboardInit) {
+                                    for (ClientThread c : connections) {
+                                        connId2Score.put(c.getConnId(), 0);
+                                    }
+                                    scoreboardInit = true;
+                                }
                                 NetworkObject o = (NetworkObject)data;
                                 System.out.println("CORRECT? :"  + (o.getCorrectness() ? "YES" : "NO"));
                                 if (o.getCorrectness()) {
-                                    if (!connId2Score.containsKey(currID) ){
-                                        connId2Score.put(currID, 1);
-                                    }
-                                    else {
-                                        connId2Score.put(currID, connId2Score.get(currID) + 1);
-                                    }
+                                    connId2Score.put(currID, connId2Score.get(currID) + 1);
                                 }
                                 System.out.println("New score " + connId2Score.get(currID));
                             });
@@ -93,7 +95,9 @@ public class Server extends Main.Connection {
 
     public void sendToAll(Serializable o) {
         for (ClientThread ct : connections) {
-            ct.send(o);
+            NetworkObject n = (NetworkObject)o;
+            n.setId(ct.getConnId());
+            ct.send(n);
         }
     }
 

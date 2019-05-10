@@ -17,6 +17,7 @@ import Main.Question;
 
 public class GUI extends Application {
 
+    private Stage pStage;
     private BorderPane layout;
     private Label questionTitle;
     private HBox displayChoices;
@@ -34,6 +35,9 @@ public class GUI extends Application {
     private Client player = new Client("127.0.0.1", 5555, (data->{
 
         NetworkObject n = (NetworkObject) data;
+        Platform.runLater(() -> {
+            pStage.setTitle("Player " + n.getId());
+        });
         String serverMessage = n.getServerMessage();
         if (n.isGameOver() == true){
             questionTitle.setText("Game Over. Restart program to play again");
@@ -87,7 +91,7 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        pStage = primaryStage;
         questionTitle = new Label("Question Template goes here");
         questionTitle.setFont(new Font("Comic Sans" /*fight me*/, 30));
 

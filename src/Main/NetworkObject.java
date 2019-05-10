@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class NetworkObject implements Serializable {
     private String serverMessage;
+    private int id;
     private Question question;
     private int playerScore;
     private boolean correctness;
@@ -58,5 +59,13 @@ public class NetworkObject implements Serializable {
 
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

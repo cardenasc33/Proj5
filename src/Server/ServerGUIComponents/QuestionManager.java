@@ -47,8 +47,8 @@ public class QuestionManager extends GridPane {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setMinWidth(250);
-        this.add(addQ, 0, 0);
-        this.add(upload, 1, 0);
+        //this.add(addQ, 0, 0);
+        this.add(upload, 0, 0);
         this.add(scrollPane, 0, 1);
         initUploadButton();
     }
