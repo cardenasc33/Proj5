@@ -26,9 +26,19 @@ public class GUI extends Application {
     private Button sendChoice;
     private TextArea console;
 
-    private static Client player = new Client("127.0.0.1", 5555, (data->{}));
+    private boolean gameStarted = false;
+    private boolean guiLoaded = false;
     private static NetworkObject clientComm;
     private static String[] questions;
+    private int playerChoice;
+
+    private Client player = new Client("127.0.0.1", 5555, (data->{
+        if (!gameStarted && guiLoaded){
+            Platform.runLater(()->{
+                console.appendText("Connected to server...\n");
+            });
+        }
+    }));
 
     public static void main(String[] args){
         launch(args);
@@ -45,6 +55,7 @@ public class GUI extends Application {
             questions[1] = "Template for answer choice 2";
             questions[2] = "Template for answer choice 3";
             questions[3] = "Template for answer choice 4";
+            guiLoaded = true;
         });
     }
 
@@ -60,10 +71,15 @@ public class GUI extends Application {
         sendChoice.setPrefSize(100, 50);
         sendChoice.setFont(new Font("Comic Sans" /*no shame*/, 14));
         sendChoice.setStyle("-fx-font-weight: bold");
+        sendChoice.setOnAction(e->{
+            if (!gameStarted)
+                console.appendText("Cannot send choice. Game has not started yet...\n");
+        });
+
 
         console = new TextArea();
         console.setEditable(false);
-        console.setPrefSize(200, 50);
+        console.setPrefSize(300, 50);
 
         bottomArea = new HBox(sendChoice, console);
         bottomArea.setAlignment(Pos.BOTTOM_CENTER);
@@ -97,6 +113,8 @@ public class GUI extends Application {
         layout.setRight(playerScores);
         primaryStage.setScene(new Scene(layout, 600, 250));
         primaryStage.show();
+
+        console.appendText("Waiting to connect to server...\n");
     }
 
     private void updateAnswerSelection(int selected, TextArea[] c){
