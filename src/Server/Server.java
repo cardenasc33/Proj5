@@ -46,18 +46,21 @@ public class Server extends Main.Connection {
                         s.setTcpNoDelay(true);
 
                         // make clientThread object from the newly accepted socket
+
+                        final int currID = i;
                         ClientThread ct = new ClientThread(s, data -> {
                             // What happens when server receives a main.Card from a client:
                             Platform.runLater(() -> {
                                 NetworkObject o = (NetworkObject)data;
                                 if (o.getCorrectness()) {
-                                    if (!connId2Score.containsKey(ct.getConnId())) {
-                                        connId2Score.put(ct.getConnId(), 1);
+                                    if (!connId2Score.containsKey(currID) ){
+                                        connId2Score.put(currID, 1);
                                     }
                                     else {
-                                        connId2Score.put(ct.getConnId(), connId2Score.get(ct.getConnId() + 1));
+                                        connId2Score.put(currID, connId2Score.get(currID) + 1);
                                     }
                                 }
+                                System.out.println("New score " + connId2Score.get(currID));
                             });
                         }, i);
 
