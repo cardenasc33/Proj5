@@ -43,6 +43,13 @@ public class GUI extends Application {
                 gameStarted = true;
                 playerAnswer = null;
             });
+        }else if (n.isGameOver() == true){
+            questionTitle.setText("Game Over. Restart program to play again");
+            console.appendText(n.getServerMessage());
+
+            sendChoice.setDisable(true);
+            for(int i = 0; i < choices.length; i++)
+                choices[i].setOnMouseClicked(e->{});
         }
 
         Platform.runLater(()->{
