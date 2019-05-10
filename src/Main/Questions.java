@@ -1,4 +1,4 @@
-package Server.ServerGUIComponents;
+package Main;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,40 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Question {
-    private String question;
-    private String[] alternatives;
-    private int answer;
-
-    public Question(String question, String[] alternatives, int answer) {
-        this.question = question;
-        this.alternatives = alternatives;
-        this.answer = answer;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public String[] getAlternatives() {
-        return alternatives;
-    }
-
-    public int getAnswer() {
-        return answer;
-    }
-
-    @Override
-    public String toString() {
-        String print = question + "\n";
-        for (String alternative : alternatives) {
-            print += alternative + "\n";
-        }print += "Answer: " + answer + "\n";
-        return print;
-    }
-}
-
-class Questions {
+public class Questions {
     private ArrayList<Question> questions = new ArrayList<>();
 
     public Questions(String filename)  {

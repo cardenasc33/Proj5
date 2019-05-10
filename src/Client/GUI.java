@@ -26,18 +26,12 @@ public class GUI extends Application {
     private Button sendChoice;
     private TextArea console;
 
-    private static Client player;
+    private static Client player = new Client("127.0.0.1", 5555, (data->{}));
     private static NetworkObject clientComm;
     private static String[] questions;
 
     public static void main(String[] args){
         launch(args);
-
-        player = new Client("127.0.0.1", 5555, data->{
-            Platform.runLater(()->{
-                
-            });
-        });
     }
 
     @Override

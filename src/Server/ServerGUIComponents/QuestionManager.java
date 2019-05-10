@@ -1,5 +1,7 @@
 package Server.ServerGUIComponents;
 
+import Main.Question;
+import Main.Questions;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
@@ -8,10 +10,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.Consumer;
 
 public class QuestionManager extends GridPane {
 
