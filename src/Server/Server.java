@@ -1,6 +1,7 @@
 package Server;
 
 import Client.Client;
+import Main.NetworkObject;
 import javafx.application.Platform;
 
 import java.io.IOException;
@@ -8,6 +9,8 @@ import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * main.Server.Server
@@ -16,6 +19,7 @@ public class Server extends Main.Connection {
 
     private int port;
     private ArrayList<ClientThread> connections; // List of client connections
+    private Map<Integer, Integer> connId2Score = new HashMap<>();
 
     ServerSocket serverSocket;
 
@@ -45,7 +49,15 @@ public class Server extends Main.Connection {
                         ClientThread ct = new ClientThread(s, data -> {
                             // What happens when server receives a main.Card from a client:
                             Platform.runLater(() -> {
-
+                                NetworkObject o = (NetworkObject)data;
+                                if (o.getCorrectness()) {
+                                    if (!connId2Score.containsKey(ct.getConnId())) {
+                                        connId2Score.put(ct.getConnId(), 1);
+                                    }
+                                    else {
+                                        connId2Score.put(ct.getConnId(), connId2Score.get(ct.getConnId() + 1));
+                                    }
+                                }
                             });
                         }, i);
 
